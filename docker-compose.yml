@@ -1,0 +1,37 @@
+version: '3.3'
+services:
+  bank-app:
+    image: 'ru.ilka/bank:latest'
+#    image: 'ilka/ilka_images_repository:bank-app'
+    container_name: bank
+    depends_on:
+      - postgre-db
+    ports:
+      - "8080:8080"
+  postgre-db:
+    image: postgres
+    container_name: postgre-db
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=bank
+    volumes:
+      - pgvol:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@mail.ru
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "8000:80"
+    depends_on:
+      - postgre-db
+
+volumes:
+  pgvol:
+  pgadmin:
