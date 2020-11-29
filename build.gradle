@@ -39,7 +39,7 @@ jib {
     }
 
     to {
-        image = "ru.ilka/bank-demo"
+        image = "ru.ilka/bank"
         tags = [getCheckedOutGitCommitHash().toString(), "latest"]
     }
 }

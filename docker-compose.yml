@@ -5,10 +5,10 @@ services:
 #    image: 'ilka/ilka_images_repository:bank-app'
     container_name: bank
     depends_on:
-      - postgre-db
+      - postgres-db
     ports:
       - "8080:8080"
-  postgre-db:
+  postgres-db:
     image: postgres
     container_name: postgre-db
     environment:
@@ -30,7 +30,7 @@ services:
     ports:
       - "8000:80"
     depends_on:
-      - postgre-db
+      - postgres-db
 
 volumes:
   pgvol:
