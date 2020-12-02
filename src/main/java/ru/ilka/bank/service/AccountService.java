@@ -1,16 +1,19 @@
 package ru.ilka.bank.service;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ru.ilka.bank.entity.Account;
+import ru.ilka.bank.domain.db.Account;
 import ru.ilka.bank.exception.RestException;
 import ru.ilka.bank.repository.AccountRepository;
 
 @Service
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AccountService {
-    private final AccountRepository accountRepository;
+    AccountRepository accountRepository;
 
     public Account findByIban(String iban) {
         return accountRepository.findByIban(iban)

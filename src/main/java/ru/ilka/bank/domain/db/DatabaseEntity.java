@@ -1,4 +1,4 @@
-package ru.ilka.bank.entity;
+package ru.ilka.bank.domain.db;
 
 import java.io.Serializable;
 

@@ -5,7 +5,8 @@ spring:
     name: bank
   datasource:
     platform: postgres
-    url: jdbc:postgresql://postgre-db:5432/bank
+    url: jdbc:postgresql://localhost:5432/bank
+#    url: jdbc:postgresql://postgre-db:5432/bank
     username: admin
     password: admin
   jpa:
@@ -23,11 +24,3 @@ spring:
 #logging.level.org.springframework.transaction: DEBUG
 
 logging.level.ru.ilka.bank: DEBUG
-
----
-spring:
-  config:
-    activate:
-      on-profile: local-not-container
-  datasource:
-    url: jdbc:postgresql://localhost:5432/bank

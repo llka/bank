@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EntityScan(basePackages = "ru.ilka.bank.entity")
+@EntityScan(basePackages = "ru.ilka.bank.domain.db")
 @EnableJpaRepositories(basePackages = "ru.ilka.bank.repository")
 @EnableJpaAuditing
 @EnableTransactionManagement

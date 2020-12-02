@@ -2,14 +2,13 @@ package ru.ilka.bank.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import ru.ilka.bank.dto.AccountDto;
-import ru.ilka.bank.domain.db.Account;
+import ru.ilka.bank.domain.Balance;
+import ru.ilka.bank.dto.BalanceDto;
 
 import static ru.ilka.bank.mapper.MapperConstants.SPRING_MODE;
 
 @Mapper(componentModel = SPRING_MODE)
-public interface AccountMapper {
-    @Mapping(target = "balance", ignore = true)
+public interface BalanceMapper {
     @Mapping(target = "currencyCode", source = "currency.code")
-    AccountDto toDto(Account account);
+    BalanceDto toDto(Balance balance);
 }
