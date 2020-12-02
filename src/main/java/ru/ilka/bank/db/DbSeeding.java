@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 import ru.ilka.bank.domain.TransactionTypeEnum;
 import ru.ilka.bank.domain.db.Account;
 import ru.ilka.bank.domain.db.Currency;
-import ru.ilka.bank.domain.db.Transaction;
+import ru.ilka.bank.domain.db.AccountTransaction;
 import ru.ilka.bank.repository.AccountRepository;
 import ru.ilka.bank.repository.CurrencyRepository;
-import ru.ilka.bank.repository.TransactionRepository;
+import ru.ilka.bank.repository.AccountTransactionRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -21,12 +21,12 @@ import java.util.List;
 public class DbSeeding {
     CurrencyRepository currencyRepository;
     AccountRepository accountRepository;
-    TransactionRepository transactionRepository;
+    AccountTransactionRepository transactionRepository;
 
 
     public DbSeeding(CurrencyRepository currencyRepository,
                      AccountRepository accountRepository,
-                     TransactionRepository transactionRepository) {
+                     AccountTransactionRepository transactionRepository) {
         this.currencyRepository = currencyRepository;
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
@@ -46,16 +46,14 @@ public class DbSeeding {
                 .build());
 
         transactionRepository.saveAll(List.of(
-                Transaction.builder()
+                AccountTransaction.builder()
                         .account(account)
                         .amount(BigDecimal.TEN)
-                        .currency(currency)
                         .type(TransactionTypeEnum.CREDIT)
                         .build(),
-                Transaction.builder()
+                AccountTransaction.builder()
                         .account(account)
                         .amount(BigDecimal.ONE)
-                        .currency(currency)
                         .type(TransactionTypeEnum.DEBIT)
                         .build())
         );

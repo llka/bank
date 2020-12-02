@@ -42,7 +42,7 @@ public class AccountController {
         AccountDto accountDto = accountMapper.toDto(account);
         if (withBalance) {
             Balance balance = balanceService.calculateAccountBalance(account);
-            accountDto.setBalanceDto(balanceMapper.toDto(balance));
+            accountDto.setBalance(balanceMapper.toDto(balance));
         }
         return accountDto;
     }

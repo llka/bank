@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import ru.ilka.bank.domain.Balance;
 import ru.ilka.bank.domain.TransactionTypeEnum;
 import ru.ilka.bank.domain.db.Account;
-import ru.ilka.bank.repository.TransactionRepository;
+import ru.ilka.bank.repository.AccountTransactionRepository;
 
 import java.math.BigDecimal;
 
@@ -15,14 +15,14 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class BalanceService {
-    TransactionRepository transactionRepository;
+    AccountTransactionRepository transactionRepository;
 
     public Balance calculateAccountBalance(Account account) {
         BigDecimal amountPlus = transactionRepository
-                .calculateAmountSumByTransactionTypeAccountAndCurrency(TransactionTypeEnum.CREDIT, account, account.getCurrency())
+                .calculateAmountSumByTransactionTypeAccount(TransactionTypeEnum.CREDIT, account)
                 .orElse(BigDecimal.ZERO);
         BigDecimal amountMinus = transactionRepository
-                .calculateAmountSumByTransactionTypeAccountAndCurrency(TransactionTypeEnum.DEBIT, account, account.getCurrency())
+                .calculateAmountSumByTransactionTypeAccount(TransactionTypeEnum.DEBIT, account)
                 .orElse(BigDecimal.ZERO);
 
         return Balance.builder()

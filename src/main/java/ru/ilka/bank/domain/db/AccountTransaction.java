@@ -24,7 +24,7 @@ import java.math.BigDecimal;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Transaction extends AuditableEntity {
+public class AccountTransaction extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,11 +36,6 @@ public class Transaction extends AuditableEntity {
 
     @NotNull
     private BigDecimal amount;
-
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "currency_id", nullable = false, updatable = false)
-    private Currency currency;
 
     @NotNull
     @Enumerated(EnumType.STRING)
