@@ -2,6 +2,7 @@ package ru.ilka.bank.unit.repository;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import ru.ilka.bank.domain.CurrencyCodeEnum;
 import ru.ilka.bank.domain.TransactionTypeEnum;
 import ru.ilka.bank.domain.db.Account;
 import ru.ilka.bank.domain.db.Currency;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 public class RepositoryModels {
 
     public static Currency CURRENCY = Currency.builder()
-            .code("USD")
+            .code(CurrencyCodeEnum.USD)
             .fullName("Dollar")
             .build();
 

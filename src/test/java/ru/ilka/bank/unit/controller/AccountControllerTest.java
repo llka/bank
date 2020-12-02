@@ -3,14 +3,14 @@ package ru.ilka.bank.unit.controller;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import ru.ilka.bank.controller.AccountController;
 import ru.ilka.bank.service.AccountService;
 import ru.ilka.bank.service.BalanceService;
+import ru.ilka.bank.service.CurrencyService;
+import ru.ilka.bank.service.PaymentService;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
@@ -33,6 +33,10 @@ public class AccountControllerTest extends BaseControllerTest {
     AccountService accountService;
     @MockBean
     BalanceService balanceService;
+    @MockBean
+    PaymentService paymentService;
+    @MockBean
+    CurrencyService currencyService;
 
     @Test
     public void getAccountByIbanTest_withoutBalance() throws Exception {
@@ -44,7 +48,7 @@ public class AccountControllerTest extends BaseControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.iban", is(IBAN)))
-                .andExpect(jsonPath("$.currencyCode", is(account().getCurrency().getCode())));
+                .andExpect(jsonPath("$.currencyCode", is(account().getCurrency().getCode().name())));
     }
 
     @Test
@@ -59,8 +63,7 @@ public class AccountControllerTest extends BaseControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.iban", is(IBAN)))
-                .andExpect(jsonPath("$.currencyCode", is(account().getCurrency().getCode())))
-                .andExpect(jsonPath("$.balance.amount", is(balance().getAmount().doubleValue())))
-                .andExpect(jsonPath("$.balance.currencyCode", is(balance().getCurrency().getCode())));
+                .andExpect(jsonPath("$.currencyCode", is(account().getCurrency().getCode().name())))
+                .andExpect(jsonPath("$.balance", is(balance().getAmount().doubleValue())));
     }
 }

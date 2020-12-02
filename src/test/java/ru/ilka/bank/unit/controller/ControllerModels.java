@@ -3,6 +3,7 @@ package ru.ilka.bank.unit.controller;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import ru.ilka.bank.domain.Balance;
+import ru.ilka.bank.domain.CurrencyCodeEnum;
 import ru.ilka.bank.domain.db.Account;
 import ru.ilka.bank.domain.db.Currency;
 
@@ -15,7 +16,7 @@ public class ControllerModels {
     public static Currency currency() {
         return Currency.builder()
                 .id(1L)
-                .code("USD")
+                .code(CurrencyCodeEnum.USD)
                 .fullName("Dollar")
                 .build();
     }

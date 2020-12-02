@@ -1,9 +1,10 @@
-package ru.ilka.bank.db;
+package ru.ilka.bank.util;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import ru.ilka.bank.domain.CurrencyCodeEnum;
 import ru.ilka.bank.domain.TransactionTypeEnum;
 import ru.ilka.bank.domain.db.Account;
 import ru.ilka.bank.domain.db.Currency;
@@ -36,7 +37,7 @@ public class DbSeeding {
 
     public void initData() {
         Currency currency = currencyRepository.save(Currency.builder()
-                .code("USD")
+                .code(CurrencyCodeEnum.USD)
                 .fullName("Dollar")
                 .build());
 
