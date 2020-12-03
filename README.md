@@ -1,5 +1,24 @@
-# Connect to PgAdmin
+# Run Locally
 
+####Requirements:
+- Docker
+- MacOS
+
+Open terminal in project folder and execute:
+```$xslt
+./start.sh
+./stop.sh
+```
+
+If not enough permissions to execute scripts, run:
+```$xslt
+chmod +x start.sh
+chmod +x stop.sh
+```
+#Api -  Swagger Documentation
+http://localhost:8080/swagger-ui.html
+
+# Connect to PgAdmin
 1. Open in browser http://localhost:8000
 2. Enter credentials: 
     ```
@@ -14,22 +33,6 @@
     username: admin
     password: admin
     ```
-
-# Run Locally
-```$xslt
-chmod +x start.sh
-chmod +x stop.sh
-
-./start.sh
-./stop.sh
-```
-
-
-Open in browser `localhost:8080/bank/api`
-
-#Api -  Swagger Documentation
-http://localhost:8080/swagger-ui.html
-
 
 # Run Locally in dev mode
 Carry out in terminal:

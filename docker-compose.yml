@@ -2,7 +2,6 @@ version: '3.3'
 services:
   bank-app:
     image: 'ru.ilka/bank:latest'
-#    image: 'ilka/ilka_images_repository:bank-app'
     container_name: bank
     environment:
       - SPRING_PROFILES_ACTIVE=local
