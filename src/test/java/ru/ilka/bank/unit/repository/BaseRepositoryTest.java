@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import ru.ilka.bank.repository.AccountRepository;
-import ru.ilka.bank.repository.CurrencyRepository;
 import ru.ilka.bank.repository.AccountTransactionRepository;
+import ru.ilka.bank.repository.CurrencyRepository;
 
 import static ru.ilka.bank.unit.repository.RepositoryModels.ACCOUNT;
 import static ru.ilka.bank.unit.repository.RepositoryModels.ACCOUNT_TRANSACTION_CREDIT;
@@ -18,8 +18,8 @@ import static ru.ilka.bank.unit.repository.RepositoryModels.ACCOUNT_TRANSACTION_
 import static ru.ilka.bank.unit.repository.RepositoryModels.ACCOUNT_TRANSACTION_DEBIT_2;
 import static ru.ilka.bank.unit.repository.RepositoryModels.CURRENCY;
 
-@Import(JpaTestConfig.class)
 @DataJpaTest
+@Import(JpaTestConfig.class)
 @FieldDefaults(level = AccessLevel.PROTECTED)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class BaseRepositoryTest {

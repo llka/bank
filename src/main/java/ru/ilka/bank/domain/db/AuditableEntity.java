@@ -2,7 +2,6 @@ package ru.ilka.bank.domain.db;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
@@ -24,14 +23,12 @@ import java.time.Instant;
 @AllArgsConstructor
 public abstract class AuditableEntity implements DatabaseEntity {
 
-    @EqualsAndHashCode.Exclude
     @Column(name = "created_on", nullable = false, updatable = false)
     @CreatedDate
     private Instant createdOn;
 
     @Version
-    @EqualsAndHashCode.Exclude
-    @Column(name = "last_modified_on")
+    @Column(name = "last_modified_on",  nullable = false)
     @LastModifiedDate
     private Instant lastModifiedOn;
 }

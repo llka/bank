@@ -13,6 +13,6 @@ public class CurrencyConversionService {
         if (from.equals(to) || BigDecimal.ZERO.equals(amount)) {
             return amount;
         }
-        throw new FeatureNotImplementedException("Currency coonversion");
+        throw new FeatureNotImplementedException("Currency conversion");
     }
 }

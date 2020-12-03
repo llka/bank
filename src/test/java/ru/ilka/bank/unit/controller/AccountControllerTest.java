@@ -18,9 +18,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static ru.ilka.bank.unit.controller.ControllerModels.IBAN;
-import static ru.ilka.bank.unit.controller.ControllerModels.account;
-import static ru.ilka.bank.unit.controller.ControllerModels.balance;
+import static ru.ilka.bank.unit.util.ModelGenerator.IBAN;
+import static ru.ilka.bank.unit.util.ModelGenerator.account;
+import static ru.ilka.bank.unit.util.ModelGenerator.balance;
 
 @WebMvcTest(AccountController.class)
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -53,7 +53,7 @@ public class AccountControllerTest extends BaseControllerTest {
 
     @Test
     public void getAccountByIbanTest_withBalance() throws Exception {
-        when(accountService.findByIban(ControllerModels.IBAN)).thenReturn(account());
+        when(accountService.findByIban(IBAN)).thenReturn(account());
         when(balanceService.calculateAccountBalance(account())).thenReturn(balance());
 
         mockMvc.perform(get(ACCOUNTS_PATH + GET_ACCOUNT_BY_IBAN_PATH, IBAN)
