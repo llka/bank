@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: bank
+  datasource:
+    url: jdbc:h2:mem:accountdb
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+
+logging.level.ru.ilka.bank: DEBUG

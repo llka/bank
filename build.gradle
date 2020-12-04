@@ -14,7 +14,7 @@ ext {
 
 group = 'ru.ilka'
 version = '1.0.1-SNAPSHOT'
-sourceCompatibility = '12'
+sourceCompatibility = '11'
 
 configurations {
     compileOnly {
